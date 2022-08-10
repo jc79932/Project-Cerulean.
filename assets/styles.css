@@ -26,9 +26,14 @@ body{
     from {background-color: var(--primary-selected);}
     to {background-color: var(--primary);}
 }
+@keyframes transition-color{
+    from {color: var(--light);}
+    to {color: var(--primary); border-bottom: 4px var(--primary) solid;}
+}
 #transition-bg{
     animation-name: transition-bg-color;
-    animation-duration: 4s;
+    /* animation-name: transition-color; */
+    animation-duration: 1.5s;
     animation-fill-mode: forwards;
 }
 
