@@ -20,14 +20,25 @@ body{
     margin: 0px;
     /* min-height: 100vh;
     min-width: 100vw; */
-    /* height: 100vh; */
+    
 }
+@keyframes transition-bg-color{
+    from {background-color: var(--primary-selected);}
+    to {background-color: var(--primary);}
+}
+#transition-bg{
+    animation-name: transition-bg-color;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+}
+
 
 nav{
     /* background-color: #323F4F; */
     width: 30%;
     float: left;
     height: 0px;
+    position: fixed;
 }
 
 nav a{
@@ -67,5 +78,8 @@ nav a{
 
 #button-start:hover{
     border-bottom: 0px;
-    margin-bottom: 26px;
+    border-bottom: 4px var(--dark) solid;
+    background-color: var(--primary);
+    cursor:pointer;
+    
 }
