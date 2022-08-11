@@ -88,3 +88,55 @@ nav a{
     cursor:pointer;
     
 }
+
+#quiz-content{
+    position: absolute;
+    width: 90%;
+    top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+#question-container{
+    z-index: 2;
+    height: 80vh;
+    /* width: 100%; */
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    background-color: var(--light);
+    flex-direction: column;
+}
+#question{
+    color: var(--dark);
+    font-size: 3rem;
+    margin-bottom: 28px;
+    display: block;
+    margin-bottom: 100px;
+    margin-top: 0px;
+    text-align: center;
+}
+.answer{
+    font-size: 2rem;
+    border-radius: 20px;
+    margin: 5px;
+    z-index: 3;
+    width: 60%;
+    color: var(--dark);
+    background-color: var(--primary);
+    padding: 20px;
+    border: 6px var(--light) solid ;
+    border-bottom: 2px var(--primary-selected) solid;
+    text-align: center;
+}
+.answer:hover{
+  
+    cursor: pointer;
+    background-color: var(--primary-selected);
+    border: 6px var(--primary-selected) solid ;
+    border-bottom: 2px var(--primary) solid;
+}
+.answer:hover #question{
+    margin-bottom: 0px;
+}
