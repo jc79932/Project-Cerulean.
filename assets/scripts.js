@@ -50,11 +50,37 @@ function timer(x,y){
     } else{return "Error"}
 }
 
+function gameOver(){
+    console.log("You lost!");
+}
+
+function gameTimer(e){
+    const modifyTimer = document.getElementById("game-timer");
+    
+    let seconds = e;
+    if(e>1 && e<100){
+        var timer = setInterval(function(){
+            console.log("e" + seconds);
+            modifyTimer.innerText = Math.round(seconds);
+            seconds = seconds - 0.1;
+        if (modifyTimer.style.backgroundColor=='red'){
+            seconds = seconds - 7;
+            modifyTimer.style.backgroundColor='#4484CE'
+        }
+        if (seconds < 0) {
+            clearInterval(timer);
+            gameOver();
+            console.log("Game over");
+        }else{return "Error"}
+    }, 100);}
+    } 
+
+
 const body = document.body;
 const igContent = document.createElement("div");
 igContent.innerHTML = "<section id='intro-greetings'><article><h1>Project Cerulean.</h1><div id='button-start' onclick='startQuizAnim()'>Start Quiz</div></article></section>";
 const questionContent=document.createElement("div");
-questionContent.innerHTML="<section id='quiz-content'><article id = 'question-container'><h1 id='question'></h1><div class='answer' id='one' onclick='checkAnswer(1)'></div><div class='answer' id='two' onclick='checkAnswer(2)'></div><div class='answer'id='three' onclick='checkAnswer(3)'></div><div class='answer' id='four' onclick='checkAnswer(4)'></div></article></section>"
+questionContent.innerHTML="<section id='quiz-content'><article id = 'question-container'><h1 id='question'></h1><div class='answer' id='one' onclick='checkAnswer(1)'></div><div class='answer' id='two' onclick='checkAnswer(2)'></div><div class='answer'id='three' onclick='checkAnswer(3)'></div><div class='answer' id='four' onclick='checkAnswer(4)'></div><div id='game-timer'>1</div></article></section>"
 
 const leaderBoards = "<header><nav><h1><a href='#'>Leaderboards</a></h1></nav></header>"
 
@@ -74,10 +100,17 @@ function startQuizAnim(){
     
 }
 
+function startTimer(){
+    // let aTime = 30;
+    // const modifyTimer = document.getElementById("game-timer");
+    // modifyTimer.innerText = aTime;
+    gameTimer(30);
+}
+
 function startQuiz(){
     console.log(questionText);
     body.append(questionContent);
-    
+    startTimer()
 }
 
 
@@ -97,38 +130,50 @@ function changeQuiz(){
 }
 
 function checkAnswer(z){
+    const modifyTimer = document.getElementById("game-timer");
+    var isFalse = 0;
     switch (z){
         case 1:
             if(questions[questionNum][1]==questions[0][1] || questions[questionNum][1]==questions[3][1] ){
-                console.log("Hi");
+                console.log("Hi1" + questionNum);
                 questionNum++;
                 changeQuiz();
                 break;}
+                isFalse++;
                 break;
         case 2:
             if(questions[questionNum][2]==questions[4][2] ){
-                console.log("Hi");
+                console.log("Hi2"+ questionNum);
                 questionNum++;
                 changeQuiz();
                 break;}
+                isFalse++;
                 break;
         case 3:
             if(questions[questionNum][3]==questions[2][3] ){
-                console.log("Hi");
+                console.log("Hi3"+questionNum);
                 questionNum++;
                 changeQuiz();
                 break;}
+                isFalse++;
                 break;
         case 4:
             if(questions[questionNum][4]==questions[1][4] ){
-                console.log("Hi");
+                console.log("Hi4"+questionNum);
                  questionNum++;
                 changeQuiz();
                 break;}
+                isFalse++;
                 break;
         default:
             console.log("bye");
+            modifyTimer.style.backgroundColor = 'red' ;
             break;
+    }
+    if(isFalse){
+        console.log("bye");
+        modifyTimer.style.backgroundColor = 'red' ;
+        isFalse--;
     }
 }
 wipePage();

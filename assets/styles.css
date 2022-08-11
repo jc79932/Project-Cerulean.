@@ -140,3 +140,12 @@ nav a{
 .answer:hover #question{
     margin-bottom: 0px;
 }
+#game-timer{
+    font-size: 3rem;
+    color: var(--light);
+    border-radius: 100%;
+    background-color: #4484CE;
+    border: 3px var(--dark) solid;
+    padding:20px 30px;
+    margin-top: 30px;
+}
